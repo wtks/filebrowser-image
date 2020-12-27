@@ -29,10 +29,18 @@ jobs:
         run: |
           echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
-      - name: Build and Publish
+      - name: Build and Publish (arm64)
         run: |
           docker buildx build \
             --push \
             --platform linux/arm64 \
             -f Dockerfile.arm64 \
+            -t wtks/filebrowser:latest .
+
+      - name: Build and Publish (amd64)
+        run: |
+          docker buildx build \
+            --push \
+            --platform linux/amd64 \
+            -f Dockerfile.amd64 \
             -t wtks/filebrowser:latest .
