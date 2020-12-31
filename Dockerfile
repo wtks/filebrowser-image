@@ -1,4 +1,5 @@
 FROM alpine as alpine
+ARG TARGETPLATFORM
 RUN apk --update add ca-certificates mailcap
 
 ENV FILEBROWSER_VERSION v2.11.0
