@@ -5,7 +5,7 @@ case $TARGETPLATFORM in
 "linux/amd64") archtecture=amd64 ;;
 "linux/arm64") archtecture=arm64 ;;
 "linux/arm/v7") archtecture=armv7 ;;
-"linux/arv/v6") archtecture=armv6 ;;
+"linux/arm/v6") archtecture=armv6 ;;
 *)
   echo "unsupported archtecture: $TARGETPLATFORM"
   exit 1
