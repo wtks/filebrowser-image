@@ -1,11 +1,10 @@
 FROM alpine as alpine
 RUN apk --update add ca-certificates mailcap
 
-ENV FILEBROWSER_VERSION v2.10.0
-RUN wget https://github.com/filebrowser/filebrowser/releases/download/$FILEBROWSER_VERSION/linux-amd64-filebrowser.tar.gz \
-    && mkdir -p /filebrowser \
-    && tar -C /filebrowser -xzvf linux-amd64-filebrowser.tar.gz \
-    && rm linux-amd64-filebrowser.tar.gz
+ENV FILEBROWSER_VERSION v2.11.0
+
+ADD download.sh ./
+RUN ./download.sh
 
 FROM scratch
 COPY --from=alpine /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
